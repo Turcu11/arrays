@@ -6,11 +6,12 @@ namespace arrays
     {
         static void Main(string[] args)
         {
-            int[] array = { 1, 2, 3, 4 };
-            Print(array);
+            int[] array = ReadArray();
+            PrintArray(array);
+
         }
 
-        static void Print(int[] array)
+        static void PrintArray(int[] array)
         {
             if(array is null)
             {
@@ -34,8 +35,16 @@ namespace arrays
         static int[] ReadArray()
         {
             // 1) cintesc numarul de elemente
-            // 2) pentru fiecare pozitie trebuie sa citesc valoarea
+            int nrElemente = ReadNumber("Numar de elemente = ", 3, 0);
 
+            int[] array = new int[nrElemente];
+
+            // 2) pentru fiecare pozitie trebuie sa citesc valoarea
+            for (int i = 0; i < nrElemente; i++)
+            {
+                array[i] = ReadNumber($"Element [{i}] = ",3,0);
+            }
+            return array;
         }
 
         static int ReadNumber(string label,int maxTries, int defaultValue)
